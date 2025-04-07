@@ -1,6 +1,6 @@
-import streamlit as st # type: ignore
-import joblib # type: ignore
-import numpy as np # type: ignore
+import streamlit as st 
+import joblib 
+import numpy as np 
 
 model = joblib.load('house_price_model.pkl')
 scaler = joblib.load('scaler.pkl')
@@ -23,7 +23,9 @@ B = st.number_input("Proportion of Black Population (B)", min_value=0.0, step=0.
 LSTAT = st.number_input("Lower Status Population (%) (LSTAT)", min_value=0.0, step=0.01, format="%.2f")
 
 if st.button("Predict"):
-    input_data = np.array([[CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT]])
-    input_scaled = scaler.transform(input_data)
+    columns = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']
+    input_df = pd.DataFrame([[CRIM, ZN, INDUS, CHAS, NOX, RM, AGE, DIS, RAD, TAX, PTRATIO, B, LSTAT]], columns=columns)
+
+    input_scaled = scaler.transform(input_df)
     prediction = model.predict(input_scaled)
     st.success(f"Predicted House Price (MEDV): ${prediction[0]*1000:.2f}")
