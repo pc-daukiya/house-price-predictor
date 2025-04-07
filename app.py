@@ -1,6 +1,6 @@
-import streamlit as st
-import joblib
-import numpy as np
+import streamlit as st # type: ignore
+import joblib # type: ignore
+import numpy as np # type: ignore
 
 model = joblib.load('house_price_model.pkl')
 scaler = joblib.load('scaler.pkl')
