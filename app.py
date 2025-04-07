@@ -1,6 +1,7 @@
 import streamlit as st 
 import joblib 
 import numpy as np 
+import pandas as pd
 
 model = joblib.load('house_price_model.pkl')
 scaler = joblib.load('scaler.pkl')
