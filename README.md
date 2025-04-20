@@ -51,4 +51,4 @@ The model uses these 13 features for prediction:
 - `Task1.ipynb`: Jupyter notebook with model development code
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is open source and free to use.
